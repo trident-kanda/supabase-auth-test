@@ -1,8 +1,10 @@
-import { Button , Input,IconKey, IconMail } from "@supabase/ui";
+
 const signup = () => {
   return (
-    <div>
-      
+    <div className="h-screen flex center items-center justify-center">
+      <div className="sm:max-w-xl bg-white  w-full sm:rounded-lg p-5 shadow">
+
+      </div>
     </div>
   );
 };
