@@ -1,7 +1,9 @@
 export default function Home() {
   return (
-    <div>
-      <h1>ログイン後ページ</h1>
+    <div className="h-screen flex center items-center justify-center">
+      <div className="sm:max-w-xl bg-white  w-full sm:rounded-lg p-5 shadow">
+          
+      </div>
     </div>
   )
 }
