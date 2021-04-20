@@ -2,7 +2,11 @@ import { Button, IconKey, IconMail } from "@supabase/ui";
 import { useForm, Controller } from "react-hook-form";
 import { Input } from "@supabase/ui";
 const signin = () => {
-  const { control, handleSubmit, register } = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const test = (data: any) => console.log(data);
   return (
     <div className="h-screen flex center items-center justify-center">
@@ -16,8 +20,10 @@ const signin = () => {
                 onBlur={onBlur}
                 onChange={onChange}
                 type="email"
-                label="Password"
+                label="Email"
                 icon={<IconMail />}
+                error={errors.email ? errors.email.message : ""}
+                placeholder="メールアドレス"
               />
             )}
             rules={{
@@ -37,7 +43,9 @@ const signin = () => {
                 onChange={onChange}
                 type="password"
                 icon={<IconKey />}
-                label="Email"
+                label="Password"
+                error={errors.password ? errors.password.message : ""}
+                placeholder="パスワード(8文字以上)"
               />
             )}
             rules={{
