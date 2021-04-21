@@ -2,8 +2,10 @@ import { Button, IconKey, IconMail } from "@supabase/ui";
 import { useForm, Controller } from "react-hook-form";
 import { Input } from "@supabase/ui";
 import { supabase } from "../supabase/supabase";
-import { useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Link from "next/link";
+import { UserContext } from "../util/UserContext";
+import { useRouter } from "next/router";
 const signup = () => {
   type formData = {
     email: string;
@@ -17,6 +19,14 @@ const signup = () => {
   } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
+  const { user, session } = useContext(UserContext);
+  const { replace } = useRouter();
+  useEffect(() => {
+    if (user) {
+      replace("/");
+    }
+  }, [user]);
+
   const signUp = async ({ email, password }: formData) => {};
   return (
     <div className="h-screen flex center items-center justify-center">
@@ -93,7 +103,7 @@ const signup = () => {
             }}
           />
           <div className="h-4" />
-          <Button block>送信</Button>
+          <Button block>サインアップ</Button>
           <div className="h-4" />
           <Link href="/signin">
             <a className=" font-bold hover:text-gray-500">サインインはこちら</a>

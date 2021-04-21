@@ -3,16 +3,26 @@ import { useForm, Controller } from "react-hook-form";
 import { Input } from "@supabase/ui";
 import { supabase } from "../supabase/supabase";
 import Link from "next/link";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../util/UserContext";
+import { useRouter } from "next/router";
 const signin = () => {
   type formData = {
     email: string;
     password: string;
   };
+  const { user, session } = useContext(UserContext);
+  const { replace } = useRouter();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  useEffect(() => {
+    if (user) {
+      replace("/");
+    }
+  }, [user]);
   const signIn = async ({ email, password }: formData) => {
     const res = await supabase.auth.signUp({
       email,
@@ -68,7 +78,7 @@ const signin = () => {
             }}
           />
           <div className="h-4" />
-          <Button block>送信</Button>
+          <Button block>サインイン</Button>
           <div className="h-4" />
           <Link href="/signup">
             <a className=" font-bold hover:text-gray-500">
