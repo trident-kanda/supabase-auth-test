@@ -27,7 +27,12 @@ const signup = () => {
     }
   }, [user]);
 
-  const signUp = async ({ email, password }: formData) => {};
+  const signUp = async ({ email, password }: formData) => {
+    const res = await supabase.auth.signUp({
+      email,
+      password,
+    });
+  };
   return (
     <div className="h-screen flex center items-center justify-center">
       <div className="sm:max-w-xl bg-white  w-full sm:rounded-lg p-5 shadow">

@@ -24,7 +24,7 @@ const signin = () => {
     }
   }, [user]);
   const signIn = async ({ email, password }: formData) => {
-    const res = await supabase.auth.signUp({
+    const res = await supabase.auth.signIn({
       email,
       password,
     });
