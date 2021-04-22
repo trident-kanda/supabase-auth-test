@@ -40,7 +40,7 @@ const signup = () => {
           <Controller
             control={control}
             name="email"
-            render={({ field: { onChange, onBlur, ref } }) => (
+            render={({ field: { onChange, onBlur } }) => (
               <Input
                 onBlur={onBlur}
                 onChange={onChange}
