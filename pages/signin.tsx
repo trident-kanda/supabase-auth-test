@@ -23,7 +23,7 @@ const signin = () => {
       replace("/");
     }
   }, [user]);
-  const signIn = async ({ email, password }: formData) => {
+  const runSignin = async ({ email, password }: formData) => {
     const res = await supabase.auth.signIn({
       email,
       password,
@@ -32,7 +32,7 @@ const signin = () => {
   return (
     <div className="h-screen flex center items-center justify-center">
       <div className="sm:max-w-xl bg-white  w-full sm:rounded-lg p-5 shadow">
-        <form onSubmit={handleSubmit(signIn)}>
+        <form onSubmit={handleSubmit(runSignin)}>
           <Controller
             control={control}
             name="email"
