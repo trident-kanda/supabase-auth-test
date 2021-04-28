@@ -5,8 +5,8 @@ import "tailwindcss/tailwind.css";
 import { supabase } from "../supabase/supabase";
 import { UserContext } from "../util/UserContext";
 function MyApp({ Component, pageProps }: AppProps) {
-  const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<User | null | undefined>(undefined);
+  const [session, setSession] = useState<Session | null | undefined>(undefined);
   useEffect(() => {
     const session = supabase.auth.session();
     setSession(session);
